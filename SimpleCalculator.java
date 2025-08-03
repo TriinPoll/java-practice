@@ -25,22 +25,40 @@ public class SimpleCalculator{
                         System.out.println("Please enter a number between 1 and 5.");
                     }
                 }else {
-                    System.out.println("Invalid input. Please enter a number.");
-                    scanner.next(); // consume the invalid input
+                    System.out.println("Invalid input. Please enter a number between 1 and 5.");
+                    scanner.next(); // discard the invalid input
                 }
             }
-            
 
             if(userInput == 5){
                 System.out.print("Exiting calculator. BYE!");
                 scanner.close();
                 break; // exit loop and program
             }
+            
 
-            System.out.println("choose 1st number: ");
-            double number1 = scanner.nextDouble();
-            System.out.println("choose 2nd number");
-            double number2 = scanner.nextDouble();
+            double number1=0, number2=0;
+
+            while(true){
+                System.out.println("\nPlease enter 1st number:");
+                if(scanner.hasNextDouble()){
+                    number1 = scanner.nextDouble();
+
+                    System.out.println("Please enter 2nd number:");
+                    if(scanner.hasNextDouble()){
+                        number2 = scanner.nextDouble();
+                        break;
+                    }else {
+                        System.out.println("2nd inpot is not a number");
+                        scanner.next();
+                    }
+
+                }else {
+                    System.out.println("1st inpot is not a number");
+                    scanner.next(); // discard the invalid input
+                }
+            }
+
 
             double result =0;
 
